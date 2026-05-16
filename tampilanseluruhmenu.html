@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Catering - Yayubi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="yayubi/laptopmenu.css"><body>
+
+<div class="hero">
+    <div class="hero-logos">
+        <img src="yayubi/gambarr/logo halal.jpeg" alt="Halal">
+        <img src="yayubi/gambarr/logo halal.jpeg" alt="Yayubi">
+    </div>
+    <div class="slides" id="slides">
+        <div class="slide"><img src="yayubi/gambarr/Banner nasi tumpeng.png" alt="Nasi Tumpeng"></div>
+        <div class="slide"><img src="yayubi/gambarr/Banner nasi box.png" alt="Nasi Box"></div>
+        <div class="slide"><img src="yayubi/gambarr/Banner snack.png" alt="Snack"></div>
+    </div>
+    <button class="slider-arrow prev" onclick="moveSlide(-1)">&#8249;</button>
+    <button class="slider-arrow next" onclick="moveSlide(1)">&#8250;</button>
+    <div class="slider-dots">
+        <button class="dot active" onclick="goSlide(0)"></button>
+        <button class="dot" onclick="goSlide(1)"></button>
+        <button class="dot" onclick="goSlide(2)"></button>
+    </div>
+</div>
+
+<div class="nav-back">
+    <button onclick="window.history.back()">Kembali</button>
+</div>
+
+<div class="main">
+    <div class="section-header">
+        <div><span class="badge-terlaris">Paket Terlaris</span></div>
+        <div class="section-title">Menu Utama</div>
+        <div class="section-sub">Pilihan terbaik pelanggan kami</div>
+    </div>
+
+    <div class="search-wrap">
+        <input type="text" id="search-input" placeholder="Cari menu makanan..." oninput="filterMenu()">
+        <span class="search-icon">🔍</span>
+    </div>
+
+    <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterCategory('semua', this)">Semua</button>
+        <button class="tab-btn" onclick="filterCategory('nasi-tumpeng', this)">Nasi Tumpeng</button>
+        <button class="tab-btn" onclick="filterCategory('nasi-dus', this)">Nasi Dus</button>
+        <button class="tab-btn" onclick="filterCategory('snack', this)">Snack</button>
+    </div>
+
+    <div class="paket-grid" id="paket-grid">
+
+        <div class="card" id="card1" data-category="nasi-tumpeng" data-name="tumpeng besar">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Tumpeng Besar</div>
+                <div class="detail-text">Sajian lengkap nasi kuning dengan lauk pauk pilihan, cocok untuk acara syukuran besar.</div>
+                <div class="detail-price">Rp600.000</div>
+                <button class="close-btn" onclick="closeDetail('card1')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/tumpeng besar.jpeg" alt="Tumpeng Besar">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Tumpeng</span>
+                <div class="card-tag">Tumpeng Besar</div>
+                <div class="card-price">Rp600.000 <span>/pax</span></div>
+                <button class="card-btn" onclick="showDetail('card1')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card2" data-category="nasi-tumpeng" data-name="tumpeng kecil">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Tumpeng Kecil</div>
+                <div class="detail-text">Porsi pas untuk acara keluarga dengan rasa yang tetap autentik.</div>
+                <div class="detail-price">Rp350.000</div>
+                <button class="close-btn" onclick="closeDetail('card2')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/tumpeng kecil.jpeg" alt="Tumpeng Kecil">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Tumpeng</span>
+                <div class="card-tag">Tumpeng Kecil</div>
+                <div class="card-price">Rp350.000 <span>/pax</span></div>
+                <button class="card-btn" onclick="showDetail('card2')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card3" data-category="nasi-dus" data-name="nasi dus ayam bakar">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nasi Dus Ayam Bakar</div>
+                <div class="detail-text">Nasi + Ayam Bakar + Sambal + Lalap.</div>
+                <div class="detail-price">Rp20.000</div>
+                <button class="close-btn" onclick="closeDetail('card3')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nasidusayambakar.jpeg" alt="Ayam Bakar">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Dus</span>
+                <div class="card-tag">Ayam Bakar</div>
+                <div class="card-price">Rp20.000 <span>/dus</span></div>
+                <button class="card-btn" onclick="showDetail('card3')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card4" data-category="nasi-dus" data-name="nasi dus ayam goreng">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nasi Dus Ayam Goreng</div>
+                <div class="detail-text">Nasi + Ayam Goreng + Sambal + Lalap.</div>
+                <div class="detail-price">Rp20.000</div>
+                <button class="close-btn" onclick="closeDetail('card4')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nasiayamgorengsambellalap.jpeg" alt="Ayam Goreng">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Dus</span>
+                <div class="card-tag">Ayam Goreng</div>
+                <div class="card-price">Rp20.000 <span>/dus</span></div>
+                <button class="card-btn" onclick="showDetail('card4')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card5" data-category="nasi-dus" data-name="nasi dus capcay">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nasi Dus Capcay</div>
+                <div class="detail-text">Nasi + Ayam Goreng + Capcay + Bakmi + Sambal.</div>
+                <div class="detail-price">Rp25.000</div>
+                <button class="close-btn" onclick="closeDetail('card5')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nasi capcay.jpeg" alt="Capcay">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Dus</span>
+                <div class="card-tag">Nasi Dus Capcay</div>
+                <div class="card-price">Rp25.000 <span>/dus</span></div>
+                <button class="card-btn" onclick="showDetail('card5')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card6" data-category="nasi-dus" data-name="nasi dus gudangan">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nasi Dus Gudangan</div>
+                <div class="detail-text">Nasi + Gudangan Sayur + Tahu Tempe + Telur.</div>
+                <div class="detail-price">Rp20.000</div>
+                <button class="close-btn" onclick="closeDetail('card6')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nasi gudangan.jpeg" alt="Gudangan">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Dus</span>
+                <div class="card-tag">Nasi Dus Gudangan</div>
+                <div class="card-price">Rp20.000 <span>/dus</span></div>
+                <button class="card-btn" onclick="showDetail('card6')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card7" data-category="nasi-dus" data-name="nasi dus kering tempe">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nasi Dus Kering Tempe</div>
+                <div class="detail-text">Nasi + Kering Tempe + Telur Dadar + Sambal Goreng.</div>
+                <div class="detail-price">Rp20.000</div>
+                <button class="close-btn" onclick="closeDetail('card7')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nasi kering tempe.jpeg" alt="Kering Tempe">
+            <div class="card-body">
+                <span class="card-category-badge">Nasi Dus</span>
+                <div class="card-tag">Kering Tempe</div>
+                <div class="card-price">Rp20.000 <span>/dus</span></div>
+                <button class="card-btn" onclick="showDetail('card7')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card8" data-category="snack" data-name="kroket">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Kroket</div>
+                <div class="detail-text">Kentang lembut dengan isian daging gurih.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card8')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/kroket.jpeg" alt="Kroket">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Kroket</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card8')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card9" data-category="snack" data-name="risoles mayo">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Risoles Mayo</div>
+                <div class="detail-text">Kulit renyah dengan isian mayo, telur, dan smoke beef.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card9')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/risol mayo.jpeg" alt="Risoles Mayo">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Risoles Mayo</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card9')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card10" data-category="snack" data-name="putu ayu">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Putu Ayu</div>
+                <div class="detail-text">Kue tradisional lembut dengan taburan kelapa parut.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card10')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/putu ayu.jpeg" alt="Putu Ayu">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Putu Ayu</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card10')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card11" data-category="snack" data-name="lemper">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Lemper</div>
+                <div class="detail-text">Ketan gurih berisi abon atau ayam suwir.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card11')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/lemper.jpeg" alt="Lemper">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Lemper</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card11')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card12" data-category="snack" data-name="klepon">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Klepon</div>
+                <div class="detail-text">Bola ketan isi gula merah lumer.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card12')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/klepon.jpeg" alt="Klepon">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Klepon</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card12')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card13" data-category="snack" data-name="nagasari">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Nagasari</div>
+                <div class="detail-text">Kue pisang tradisional dibalut tepung beras.</div>
+                <div class="detail-price">Rp3.500</div>
+                <button class="close-btn" onclick="closeDetail('card13')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/nagasari.jpeg" alt="Nagasari">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Nagasari</div>
+                <div class="card-price">Rp3.500 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card13')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card14" data-category="snack" data-name="dadar gulung">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Dadar Gulung</div>
+                <div class="detail-text">Kulit dadar hijau dengan isian kelapa manis.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card14')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/dadar gulung.jpeg" alt="Dadar Gulung">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Dadar Gulung</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card14')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card15" data-category="snack" data-name="onde onde mochi">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Onde Onde Mochi</div>
+                <div class="detail-text">Kenyal dengan taburan wijen dan isian kacang hijau.</div>
+                <div class="detail-price">Rp3.500</div>
+                <button class="close-btn" onclick="closeDetail('card15')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/onde onde.jpeg" alt="Onde Onde">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Onde Onde Mochi</div>
+                <div class="card-price">Rp3.500 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card15')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card16" data-category="snack" data-name="pukis">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Pukis</div>
+                <div class="detail-text">Kue empuk legit dengan topping cokelat/keju.</div>
+                <div class="detail-price">Rp3.000</div>
+                <button class="close-btn" onclick="closeDetail('card16')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/pukis.jpeg" alt="Pukis">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Pukis</div>
+                <div class="card-price">Rp3.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card16')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card17" data-category="snack" data-name="macaroni schootel">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Macaroni Schootel</div>
+                <div class="detail-text">Macaroni panggang dengan susu, telur, dan keju.</div>
+                <div class="detail-price">Rp4.000</div>
+                <button class="close-btn" onclick="closeDetail('card17')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/macroni scothel.jpeg" alt="Macaroni">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Macaroni Schootel</div>
+                <div class="card-price">Rp4.000 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card17')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="card" id="card18" data-category="snack" data-name="brownies">
+            <div class="card-detail-overlay">
+                <div class="detail-title">Brownies</div>
+                <div class="detail-text">Cokelat pekat fudgy dengan rasa yang mewah.</div>
+                <div class="detail-price">Rp3.500</div>
+                <button class="close-btn" onclick="closeDetail('card18')">✕ Tutup</button>
+            </div>
+            <img class="card-img" src="yayubi/gambarr/brownies.jpeg" alt="Brownies">
+            <div class="card-body">
+                <span class="card-category-badge">Snack</span>
+                <div class="card-tag">Brownies</div>
+                <div class="card-price">Rp3.500 <span>/pcs</span></div>
+                <button class="card-btn" onclick="showDetail('card18')">👁 Lihat Detail</button>
+            </div>
+        </div>
+
+        <div class="no-result" id="no-result">
+            <span>🔍</span>
+            Menu tidak ditemukan. Coba kata kunci lain.
+        </div>
+
+    </div>
+</div>
+
+<script src="yayubi/laptopmenu.js"></script>
+
+</body>
+</html>
